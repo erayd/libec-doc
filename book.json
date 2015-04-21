@@ -1,0 +1,6 @@
+{
+  "gitbook": ">=2.0.0",
+  "title": "Libec Manual",
+  "description": "Developer's manual for libec (https://github.com/erayd/libec)",
+  "language": "en"
+}
