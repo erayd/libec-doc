@@ -8,7 +8,8 @@ ec_record_t *ec_record(uint16_t flags, unsigned char *key, uint8_t key_len, unsi
 ec_record_t *ec_append(ec_cert_t *c, char *section, ec_record_t *r);
 
 //find the first matching record in a record list
-ec_record_t *ec_match(ec_record_t *start, char *section, uint16_t flags, unsigned char *key, uint8_t key_len, unsigned char *data, uint16_t data_len);
+ec_record_t *ec_match(ec_record_t *start, char *section, uint16_t flags, unsigned char *key, uint8_t key_len,
+    unsigned char *data, uint16_t data_len);
 
 //free a record, plus associated data if KFREE / DFREE is set
 void ec_record_destroy(ec_record_t *r);
