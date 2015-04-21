@@ -3,5 +3,5 @@
 * [Introduction](README.md)
 * [Certificate Layout](chapters/layout.md)
 * API
-   * Records
+   * [Records](chapters/records.md)
 
