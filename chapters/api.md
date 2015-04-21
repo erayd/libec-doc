@@ -2,7 +2,8 @@
 ## Records
 ```c
 //create a new record - use EC_RECORD_{KCOPY,KFREE,DCOPY,DFREE} for memory management
-ec_record_t *ec_record(uint16_t flags, unsigned char *key, uint8_t key_len, unsigned char *data, uint16_t data_len);
+ec_record_t *ec_record(uint16_t flags, unsigned char *key, uint8_t key_len, unsigned char *data,
+    uint16_t data_len);
 
 //append a record to a certificate
 ec_record_t *ec_append(ec_cert_t *c, char *section, ec_record_t *r);
