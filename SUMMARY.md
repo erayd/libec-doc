@@ -1,3 +1,6 @@
 # Summary
- * [Introduction](README.md)
- * [Certificate Layout](chapters/layout.md)
+
+* [Introduction](README.md)
+* [Certificate Layout](chapters/layout.md)
+* API
+
