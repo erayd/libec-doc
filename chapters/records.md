@@ -8,4 +8,6 @@ Returns a new ec_record_t, or NULL on error.
 ```c
 ec_record_t *r = ec_record(EC_RECORD_NOSIGN, mykey, mykey_len,
     mydata, mydata_len);
+if(r)
+    ec_destroy(r);
 ```
