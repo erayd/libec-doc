@@ -2,5 +2,4 @@
 
 * [Introduction](README.md)
 * [Certificate Layout](chapters/layout.md)
-* [API](chapters/api.md)
 
