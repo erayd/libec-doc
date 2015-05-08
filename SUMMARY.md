@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * [Usage](chapters/usage.md)
-* Certificates
+* [Certificates](chapters/certificates.md)
 
