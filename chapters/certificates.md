@@ -25,3 +25,10 @@ ec_cert_t *cert = ec_cert_create(from, until);
 `void ec_cert_destroy(ec_cert_t *c);`
 
 Destroy a certificate previously created with `ec_cert_create()`.
+
+```c
+#include <ec.h>
+...
+ec_cert_destroy(cert);
+...
+```
