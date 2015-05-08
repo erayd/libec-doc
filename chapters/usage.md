@@ -10,3 +10,7 @@ int main(void) {
     ...
 }
 ```
+
+`ec.h` is the only header required, and declares all user-accessible functionality. `-lec` will link to it.
+
+`ec_init()` should be called before any other function in the library. This function may be called more than once, but is not thread-safe. All other functions are thread-safe.
