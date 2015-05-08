@@ -11,5 +11,17 @@ Timestamps are handled as seconds since 1970-01-01 00:00:00. The current time ca
 
 Certificates created using this function must be destroyed using `ec_cert_destroy()` when they are no longer required.
 
+```c
+#include <ec.h>
+#include <time.h>
+...
+time_t from = time(NULL);
+time_t until = from + (86400 * 365); //one year
+ec_cert_t *cert = ec_cert_create(from, until);
+...
+```
+
 ##ec_cert_destroy()
 `void ec_cert_destroy(ec_cert_t *c);`
+
+Destroy a certificate previously created with `ec_cert_create()`.
