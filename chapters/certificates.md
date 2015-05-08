@@ -10,3 +10,6 @@ Create a new certificate, and return a pointer to it. Returns NULL on failure. `
 Timestamps are handled as seconds since 1970-01-01 00:00:00. The current time can be obtained using `time()` (see `time.h`).
 
 Certificates created using this function must be destroyed using `ec_cert_destroy()` when they are no longer required.
+
+##ec_cert_destroy()
+`void ec_cert_destroy(ec_cert_t *c);`
