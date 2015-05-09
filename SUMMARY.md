@@ -5,4 +5,5 @@
 * [Certificates](chapters/certificates.md)
 * [Records](chapters/records.md)
 * [Contexts](chapters/contexts.md)
+* Roles & Grants
 
