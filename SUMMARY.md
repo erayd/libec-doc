@@ -7,5 +7,5 @@
 * [Contexts](chapters/contexts.md)
 * [Roles & Grants](chapters/roles_&_grants.md)
 * [Export & Import](chapters/export_&_import.md)
-* Misc
+* [Misc](chapters/misc.md)
 
