@@ -101,3 +101,16 @@ ec_id_t id = ec_cert_id(c);
 ```
 
 ##ec_cert_records()
+`ec_record_t *ec_cert_records(ec_cert_t *c);`
+
+Get the records list for a certificate. Returns NULL if there are no records present.
+
+```c
+#include <ec.h>
+...
+ec_record_t *list = ec_cert_records(c);
+if(list == NULL) {
+    //no records present
+}
+...
+```
