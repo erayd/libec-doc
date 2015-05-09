@@ -97,3 +97,14 @@ Identical to `ec_add(c, section, ec_record_str(flags, key, data));`
 `char *ec_get(ec_record_t *start, char *section, uint16_t flags, char *key);`
 
 Get the NULL-terminated data field from a matching record. Returns NULL if not found, or if the data field is not NULL-terminated.
+
+```c
+#include <ec.h>
+...
+ec_record_t *list = ec_cert_records(c);
+char *s = ec_get(list, "my_section", EC_RECORD_NOSIGN, "my_record");
+if(s != NULL) {
+    //found a valid matching string
+}
+...
+```
