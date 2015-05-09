@@ -48,3 +48,28 @@ if(g == NULL) {
 Check whether a certificate holds the given role. Returns EC_OK on success, or a nonzero error code otherwise.
 
 If the certificate holds a matching wildcard role, this is considered sufficient (e.g. if a certificate holds `com.example.*`, it is also considered to hold `com.example.myPond.goFishing`).
+
+```c
+#include <ec.h>
+...
+if(ec_role_has(c, "com.example.myPond") == EC_OK) {
+    //certificate holds the com.example.myPond permission
+}
+...
+```
+
+##ec_role_has_grant()
+`ec_err_t ec_role_has_grant(ec_cert_t *c, char *role);`
+
+Check whether a certificate is allowed to grant the given role. This does ***not*** imply that the certificate also holds this role; grants and roles may be held independantly.
+
+If the certificate holds a matching wildcard grant, this is considered sufficient (e.g. if a certificate defines a grant for `com.example.*`, it may also grant `com.example.myPond.goFishing`).
+
+```c
+#include <ec.h>
+...
+if(ec_role_has_grant(c, "com.example.myPond.goFishing") == EC_OK) {
+    //certificate may grant com.example.myPond.goFishing
+}
+...
+```
