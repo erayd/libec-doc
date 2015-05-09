@@ -3,6 +3,6 @@
 * [Introduction](README.md)
 * [Usage](chapters/usage.md)
 * [Certificates](chapters/certificates.md)
-* [Contexts](chapters/contexts.md)
 * Records
+* [Contexts](chapters/contexts.md)
 
