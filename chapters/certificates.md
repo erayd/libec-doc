@@ -69,7 +69,7 @@ Flag|Implies|Context Required?|Tests
 EC_CHECK_CERT||No|Certificate is the correct version, a valid public key is present, the current time falls within the certificate's validity period, any records present are of a valid length, any section records have a NULL-terminated string key.
 EC_CHECK_SECRET||No|A secret key is present
 EC_CHECK_SIGN||Yes<sup>1</sup>|Signer ID is present, signature is present, signer is available, validity period falls within signer validity period, signature passes cryptographic validation.
-EC_CHECK_CHAIN<sup>2</sup>|EC_CHECK_SIGN|Yes|Certificate is not self-signed, signer also passes every check that certificate is required to pass, except for `EC_CHECK_SECRET`.
+EC_CHECK_CHAIN<sup>2</sup>|EC_CHECK_SIGN|Yes|Certificate is not self-signed, signer also passes every check that certificate is required to pass, except for EC_CHECK_SECRET.
 
 
 <sup>1</sup> Context is not required if the certificate is self-signed.  
