@@ -55,3 +55,20 @@ if(ec_cert_sign(c, signer) != 0) {
 }
 ...
 ```
+
+##ec_cert_check()
+`ec_err_t ec_cert_check(ec_ctx_t *ctx, ec_cert_t *c, int flags);`
+Ensure that a certificate passes a given set of tests. Returns a nonzero error code on failure.
+
+All tests which require a valid trust chain to be present must also provide a context where the trust chain may be found. Tests which apply only to the certificate may pass `NULL` instead.
+
+The `flags` parameter is used to set which tests are run, according to the following table:
+
+Flag|Implies|Context Required?|Tests
+-|-|-|-
+EC_CHECK_CERT||No|Certificate is the correct version, a valid public key is present, the current time falls within the certificate's validity period, any records present are of a valid length, any section records have a NULL-terminated string key.
+EC_CHECK_SECRET||No|A secret key is present
+EC_CHECK_SIGN||Yes<sup>1</sup>|Signer ID is present, signature is present, signer is available, validity period falls within signer validity period, signature passes cryptographic validation.
+
+
+<sup>1</sup> Context is not required if the certificate is self-signed.
