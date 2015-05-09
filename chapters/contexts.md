@@ -1,6 +1,8 @@
 # Contexts
 Contexts are used to manage groups of certificates together. They contain a centralised configuration, and a pool of stored certificates.
 
+Contexts are automatically used when checking a certificate's signer, trust chain, or grants & roles. In most cases, every certificate you create should be assigned to a context.
+
 When a context is destroyed, all associated certificates are also destroyed at the same time.
 
 ##ec_ctx_create()
@@ -52,6 +54,20 @@ ec_ctx_autoload(ctx, my_autoloader);
 ...
 ```
 
+##ec_ctx_next()
+`ec_ctx_t *ec_ctx_next(ec_ctx_t *ctx, ec_ctx_t *next);`
+
+Sets the next context to search when attempting to load a certificate from the context's internal store. Always returns `next`.
+
+This is used when trying to locate a certificate using `ec_ctx_cert()` which is not available in the context's internal store of via autoload.
+
+```c
+#include <ec.h>
+...
+ec_ctx_next(ctx, my_other_ctx);
+...
+```
+
 ##ec_ctx_save()
 `ec_cert_t *ec_ctx_save(ec_ctx_t *ctx, ec_cert_t *c);`
 
@@ -68,15 +84,19 @@ if(ec_ctx_save(ctx, c) == NULL) {
 ...
 ```
 
-##ec_ctx_load()
+##ec_ctx_cert()
 `ec_cert_t *ec_ctx_cert(ec_ctx_t *ctx, ec_id_t id);`
 
 Loads a certificate from the context's internal store. Returns NULL on failure (e.g. if a certificate is not found).
 
+If an autoloader is defined, an attempt will be made to autoload the certificate if it is not already present in the store.
+
+If an additional search context has been defined using `ec_ctx_next()`, that context will also be searched (*after* attempting to autoload).
+
 ```c
 #include <ec.h>
 ...
-ec_cert_t *c = ec_ctx_load(c, my_cert_id);
+ec_cert_t *c = ec_ctx_cert(c, my_cert_id);
 if(c != NULL) {
     //certificate loaded OK
 }
