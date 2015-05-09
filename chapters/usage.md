@@ -18,7 +18,7 @@ int main(void) {
 ##ec_init()
 `ec_err_t ec_init(void);`
 
-Initialises libec and its dependencies. Returns a nonzero error code on failure.
+Initialises libec and its dependencies. Returns a nonzero error code on failure. `ec_init()` must be called before any other function in the library.
 
 This function may be called more than once, but is not thread-safe. All other functions are thread-safe.
 
