@@ -2,6 +2,8 @@
 
 Certificates are represented by the `ec_cert_t` type, and are created by `ec_cert_create()`. All certificates must be freed once they are no longer required using `ec_cert_destroy()`.
 
+If a certificate has been saved using `ec_ctx_save()`, then it will be destroyed automatically once it is removed, overwritten, or the context it was saved to is destroyed.
+
 ##ec_cert_create()
 `ec_cert_t *ec_cert_create(time_t valid_from, time_t valid_until);`
 
