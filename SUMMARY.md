@@ -4,4 +4,5 @@
 * [Usage](chapters/usage.md)
 * [Certificates](chapters/certificates.md)
 * [Contexts](chapters/contexts.md)
+* Records
 
