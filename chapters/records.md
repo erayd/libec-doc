@@ -17,4 +17,4 @@ Flag|Meaning
 -|-
 EC_RECORD_SECTION|Record is a section header.
 EC_RECORD_REQUIRE|Client *must* understand this record. If it does not, the certificate must be treated as invalid.
-EC_RECORD_INHERIT|If this record is a section header, then all records added to this section will inherit the same flags by default. Otherwise, this record will inherit its flags from the section header. Inheritance is defined as `record_flags \\|= (section_flags & 0xFF)`.
+EC_RECORD_INHERIT|If this record is a section header, then all records added to this section will inherit the same flags by default. Otherwise, this record will inherit its flags from the section header. Inheritance is defined as `record_flags <code>&#124;</code>= (section_flags & 0xFF)`.
