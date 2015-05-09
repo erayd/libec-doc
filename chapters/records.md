@@ -122,3 +122,18 @@ if(s != NULL) {
 }
 ...
 ```
+
+##ec_record_section()
+`char *ec_Record_section(ec_record_t *r);`
+
+Get the name for the section to which the record belongs. Returns the section name if present, or NULL if the record is not associated with a section, or is a section header.
+
+```c
+#include <ec.h>
+...
+char *section_name = ec_record_section(r);
+if(section_name != NULL) {
+    //record has a valid section name
+}
+...
+```
