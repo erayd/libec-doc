@@ -34,3 +34,12 @@ if(r == NULL) {
 ...
 ```
 
+##ec_record_bin()
+`ec_record_t *ec_record_bin(uint16_t flags, unsigned char *key, uint8_t key_len, unsigned char *data, uint16_t data_len);`
+
+Identical to `ec_record()`, except using a binary key.
+
+##ec_record_str()
+`ec_record_t *ec_record_str(uint16_t flags, char *key, char *data);`
+
+Identical to `ec_record()`, except data is a NULL-terminated string.
