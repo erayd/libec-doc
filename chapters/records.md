@@ -19,3 +19,18 @@ EC_RECORD_SECTION|Record is a section header.
 EC_RECORD_REQUIRE|Client *must* understand this record. If it does not, the certificate must be treated as invalid.
 EC_RECORD_INHERIT|If this record is a section header, then all records added to this section will inherit the same flags by default. Otherwise, this record will inherit its flags from the section header. Inheritance is defined as a bitwise OR with the section header for all inheritable flags.
 EC_RECORD_NOSIGN|This record will not be signed, and should be treated as untrustworthy. Intended for adding comments, internal metadata etc. to an already-signed certificate.
+EC_RECORD_KFREE|The key for this record will be automatically freed when the record is destroyed.
+EC_RECORD_KCOPY|The key for this record will be copied, rather than added by reference. Implies EC_RECORD_KFREE.
+EC_RECORD_DFREE|The data for this record will be automatically freed when the record is destroyed.
+EC_RECORD_DCOPY|The data for this record will be copied, rather than added by reference. Implies EC_RECORD_DFREE.
+
+```c
+#include <ec.h>
+...
+ec_record_t *r = ec_record(EC_RECORD_NOSIGN | EC_RECORD_DCOPY, "my_key", my_data, my_data_length);
+if(r == NULL) {
+    //failed to create record
+}
+...
+```
+
