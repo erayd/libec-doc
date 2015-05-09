@@ -16,3 +16,14 @@ A certificate with the flag `EC_CERT_TRUSTED` may define any role or grant, with
 `ec_record_t *ec_role_add(ec_cert_t *c, char *role);`
 
 Add a role to a certificate. Returns the new role record on success, NULL otherwise.
+
+```c
+#include <ec.h>
+...
+ec_record_t *r = ec_role_add(c, "com.example.myPond.goFishing");
+if(r == NULL) {
+    //failed to add role
+}
+...
+```
+
