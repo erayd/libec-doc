@@ -27,3 +27,17 @@ if(r == NULL) {
 ...
 ```
 
+##ec_role_grant()
+`ec_record_t *ec_role_grant(ec_cert_t *c, char *role);`
+
+Allow a certificate to grant a role. Returns the new grant record on success, NULL otherwise.
+
+```c
+#include <ec.h>
+...
+ec_record_t *g = ec_role_grant(c, "com.example.myPond.*");
+if(g == NULL) {
+    //failed to add grant for role
+}
+...
+```
