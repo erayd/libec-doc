@@ -51,3 +51,34 @@ ec_cert_t *my_autoloader(ec_id_t id) {
 ec_ctx_autoload(ctx, my_autoloader);
 ...
 ```
+
+##ec_ctx_save()
+`ec_cert_t *ec_ctx_save(ec_ctx_t *ctx, ec_cert_t *c);`
+
+Saves a certificate in the context's internal store, and returns a pointer to the certificate. Returns NULL on failure.
+
+Saving a certificate transfers its ownership to the context, and it will be automatically freed when it is overwritten or when the context is destroyed. The user should ***not*** manually destroy certificates which have been saved in a context.
+
+```c
+#include <ec.h>
+...
+if(ec_ctx_save(ctx, c) == NULL) {
+    //failed to save certificate
+}
+...
+```
+
+##ec_ctx_load()
+`ec_cert_t *ec_ctx_cert(ec_ctx_t *ctx, ec_id_t id);`
+
+Loads a certificate from the context's internal store. Returns NULL on failure (e.g. if a certificate is not found).
+
+```c
+#include <ec.h>
+...
+ec_cert_t *c = ec_ctx_load(c, my_cert_id);
+if(c != NULL) {
+    //certificate loaded OK
+}
+...
+```
