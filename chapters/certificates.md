@@ -58,6 +58,7 @@ if(ec_cert_sign(c, signer) != 0) {
 
 ##ec_cert_check()
 `ec_err_t ec_cert_check(ec_ctx_t *ctx, ec_cert_t *c, int flags);`
+
 Ensure that a certificate passes a given set of tests. Returns a nonzero error code on failure.
 
 All tests which require a valid trust chain to be present must also provide a context where the trust chain may be found. Tests which apply only to the certificate may pass `NULL` instead.
@@ -75,3 +76,20 @@ EC_CHECK_ROLE|EC_CHECK_CHAIN|Yes|Grant records have a valid string key, grant re
 
 <sup>1</sup> Context is not required if the certificate is self-signed.  
 <sup>2</sup> `EC_CHECK_CHAIN` always passes if `EC_CERT_TRUSTED` is set on the certificate.
+
+```c
+#include <ec.h>
+...
+if(ec_cert_check(ctx, c, EC_CHECK_CERT | EC_CHECK_ROLE) != 0) {
+    //certificate passes the defined checks
+}
+...
+```
+
+##ec_cert_id()
+`ec_id_t ec_cert_id(ec_cert_t *c);`
+
+Get a unique ID for a certificate. This ID is based on the certificate's public key, and will not change if the certificate is modified by e.g. signing, adding records etc.
+
+```c
+#include 
