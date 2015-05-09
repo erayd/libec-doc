@@ -99,3 +99,5 @@ This ID is used for things like retrieving a certificate from a context store, i
 ec_id_t id = ec_cert_id(c);
 ...
 ```
+
+##ec_cert_records()
