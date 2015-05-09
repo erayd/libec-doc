@@ -91,6 +91,8 @@ if(ec_cert_check(ctx, c, EC_CHECK_CERT | EC_CHECK_ROLE) != 0) {
 
 Get a unique ID for a certificate. This ID is based on the certificate's public key, and will not change if the certificate is modified by e.g. signing, adding records etc.
 
+This ID is used for things like retrieving a certificate from a context store, identifying a signer, etc.
+
 ```c
 #include <ec.h>
 ...
