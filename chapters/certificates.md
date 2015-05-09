@@ -17,7 +17,7 @@ Certificates created using this function must be destroyed using `ec_cert_destro
 ...
 time_t from = time(NULL);
 time_t until = from + (86400 * 365); //one year
-ec_cert_t *cert = ec_cert_create(from, until);
+ec_cert_t *c = ec_cert_create(from, until);
 ...
 ```
 
@@ -29,8 +29,27 @@ Destroy a certificate previously created with `ec_cert_create()`.
 ```c
 #include <ec.h>
 ...
-ec_cert_destroy(cert);
+ec_cert_destroy(c);
 ...
 ```
+##ec_cert_sign()
+`ec_err_t ec_cert_sign(ec_cert_t *c, ec_cert_t *signer);`
 
-ec_err_t ec_cert_sign(ec_cert_t *c, ec_cert_t *signer);
+Sign a certificate using another certificate. Returns a nonzero error code on failure.
+
+The signer must have a valid secret key available, and both certificates must pass the following checks prior to signing:
+
+```c
+ec_cert_check(NULL, c, EC_CHECK_CERT);
+ec_cert_check(NULL, signer, EC_CHECK_CERT | EC_CHECK_SECRET);
+```
+If the certificate's validity falls outside that of the signer, the appropriate timestamp on the certificate will be adjusted to match that of the signer.
+
+```c
+#include <ec.h>
+...
+if(ec_cert_sign(c, signer) != 0) {
+    //signing succeeded
+}
+...
+```
