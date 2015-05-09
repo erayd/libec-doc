@@ -60,3 +60,6 @@ if(ec_add(c, "my_section", my_record) == NULL) {
 ...
 ```
 
+##ec_match()
+`ec_record_t *ec_match(ec_record_t *start, char *section, uint16_t flags, char *key, unsigned char *data,
+  uint16_t data_len);`
