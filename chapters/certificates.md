@@ -70,6 +70,7 @@ EC_CHECK_CERT||No|Certificate is the correct version, a valid public key is pres
 EC_CHECK_SECRET||No|A secret key is present
 EC_CHECK_SIGN||Yes<sup>1</sup>|Signer ID is present, signature is present, signer is available, validity period falls within signer validity period, signature passes cryptographic validation.
 EC_CHECK_CHAIN<sup>2</sup>|EC_CHECK_SIGN|Yes|Certificate is not self-signed, signer also passes every check that certificate is required to pass, except for EC_CHECK_SECRET.
+EC_CHECK_ROLE|EC_CHECK_CHAIN|Yes|Grant records have a valid string key, grant records match or are a subset of the signer's grant records unless EC_CERT_TRUSTED is set, role records have a valid string key, role records match or are a subset of the signer's grant records unless EC_CERT_TRUSTED is set.
 
 
 <sup>1</sup> Context is not required if the certificate is self-signed.  
