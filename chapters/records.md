@@ -77,3 +77,23 @@ if(r != NULL) {
 ...
 ```
 
+##ec_match_bin()
+`ec_record_t *ec_match_bin(ec_record_t *start, char *section, uint16_t flags, unsigned char *key, uint8_t key_len,`  
+  `unsigned char *data, uint16_t data_len);`
+
+Identical to `ec_match()`, except using a binary key.
+
+##ec_match_str()
+`ec_record_t *ec_match_str(ec_record_t *start, char *section, uint16_t flags, char *key, char *data);`
+
+Identical to `ec_match()`, except data is a NULL-terminated string.
+
+##ec_set()
+`ec_record_t *ec_set(ec_cert_t *c, char *section, uint16_t flags, char *key, char *data);`
+
+Identical to `ec_add(c, section, ec_record_str(flags, key, data));`
+
+##ec_get()
+`char *ec_get(ec_record_t *start, char *section, uint16_t flags, char *key);`
+
+Get the NULL-terminated data field from a matching record. Returns NULL if not found, or if the data field is not NULL-terminated.
