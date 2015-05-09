@@ -15,7 +15,7 @@ A certificate with the flag `EC_CERT_TRUSTED` may define any role or grant, with
 ##ec_role_add()
 `ec_record_t *ec_role_add(ec_cert_t *c, char *role);`
 
-Add a role to a certificate. Returns the new role record on success, NULL otherwise.
+Add a role to a certificate. Returns the new role record on success, NULL otherwise. The created record will be automatically freed when the certificate is destroyed.
 
 ```c
 #include <ec.h>
@@ -30,7 +30,7 @@ if(r == NULL) {
 ##ec_role_grant()
 `ec_record_t *ec_role_grant(ec_cert_t *c, char *role);`
 
-Allow a certificate to grant a role. Returns the new grant record on success, NULL otherwise.
+Allow a certificate to grant a role. Returns the new grant record on success, NULL otherwise. The created record will be automatically freed when the certificate is destroyed.
 
 ```c
 #include <ec.h>
