@@ -41,3 +41,10 @@ if(g == NULL) {
 }
 ...
 ```
+
+##ec_role_has()
+`ec_err_t ec_role_has(ec_cert_t *c, char *role);`
+
+Check whether a certificate holds the given role. Returns EC_OK on success, or a nonzero error code otherwise.
+
+If the certificate holds a matching wildcard role, this is considered sufficient (e.g. if a certificate holds `com.example.*`, it is also considered to hold `com.example.myPond.goFishing`.)
