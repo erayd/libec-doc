@@ -19,3 +19,21 @@ if(ctx != NULL) {
 }
 ...
 ```
+
+##ec_ctx_destroy()
+`void ec_ctx_destroy(ec_ctx_t *ctx);`
+
+Destroys a context previously created with `ec_ctx_create()`.
+
+```c
+#include <ec.h>
+...
+ec_ctx_destroy(ctx);
+...
+```
+
+##ec_ctx_autoload()
+`typedef ec_cert_t *(*ec_autoload_t)(ec_id_t id);`  
+`void ec_ctx_autoload(ec_ctx_t *ctx, ec_autoload_t autoload);`
+
+Sets the autoload function that the context will use when trying to locate certificates it doesn't have available in its internal store.
