@@ -44,6 +44,18 @@ Identical to `ec_record()`, except using a binary key.
 
 Identical to `ec_record()`, except data is a NULL-terminated string.
 
+##ec_record_destroy()
+`void ec_record_destroy(ec_record_t *r);`
+
+Destroy a record. If EC_RECORD_KFREE / EC_RECORD_DFREE are set, then also free the record's key / data respectively.
+
+```c
+#include <ec.h>
+...
+ec_record_destroy(r);
+...
+```
+
 ##ec_add()
 `ec_record_t *ec_add(ec_cert_t *c, char *section, ec_record_t *r);`
 
