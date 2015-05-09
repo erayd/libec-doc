@@ -69,4 +69,11 @@ Find the first matching record in a record list. `key` must be a NULL-terminated
 ```c
 #include <ec.h>
 ...
-ec_record_t *r = ec_match(c->records, 
+ec_record_t *list = ec_cert_records(c);
+ec_record_t *r = ec_match(list, "my_section", EC_RECORD_NOSIGN, "my_record", NULL, 0);
+if(r != NULL) {
+    //found a matching record
+}
+...
+```
+
