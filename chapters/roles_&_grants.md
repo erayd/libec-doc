@@ -47,4 +47,4 @@ if(g == NULL) {
 
 Check whether a certificate holds the given role. Returns EC_OK on success, or a nonzero error code otherwise.
 
-If the certificate holds a matching wildcard role, this is considered sufficient (e.g. if a certificate holds `com.example.*`, it is also considered to hold `com.example.myPond.goFishing`.)
+If the certificate holds a matching wildcard role, this is considered sufficient (e.g. if a certificate holds `com.example.*`, it is also considered to hold `com.example.myPond.goFishing`).
