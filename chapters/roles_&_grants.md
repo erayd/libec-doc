@@ -9,3 +9,10 @@ As an example, the role of `com.example.myPond.goFishing` might allow the user t
 In order for a role to be considered valid, the certificate's signer must have either the same role, or a parent / wildcard role which matches it, defined as a grant. In order for a grant to be considered valid, the certificate's signer must have the same grant, or a parent / wildcard grant which matches it, defined as a grant.
 
 This means that a certificate may also delegate granting authority for any role it is capable of granting.
+
+A certificate with the flag `EC_CERT_TRUSTED` may define any role or grant, with no higher authority required to validate it. Such roles and grants must be explicitly defined in the certificate; by default a certificate defines nothing at all.
+
+##ec_role_add()
+`ec_record_t *ec_role_add(ec_cert_t *c, char *role);`
+
+Add a role to a certificate. Returns the new role record on success, NULL otherwise.
