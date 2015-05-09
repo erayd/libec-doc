@@ -43,3 +43,20 @@ Identical to `ec_record()`, except using a binary key.
 `ec_record_t *ec_record_str(uint16_t flags, char *key, char *data);`
 
 Identical to `ec_record()`, except data is a NULL-terminated string.
+
+##ec_add()
+`ec_record_t *ec_add(ec_cert_t *c, char *section, ec_record_t *r);`
+
+Add a record to a certificate. Returns `r` on success, NULL otherwise.
+
+The record will be added to the section referred to by `section`, and the section will be created if it does not already exist. If `EC_RECORD_SECTION` is set, then `section` will be ignored and the record will be treated as a section header.
+
+```c
+#include <ec.h>
+...
+if(ec_add(c, "my_section", my_record) == NULL) {
+    //failed to add record
+}
+...
+```
+
