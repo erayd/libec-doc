@@ -37,3 +37,17 @@ ec_ctx_destroy(ctx);
 `void ec_ctx_autoload(ec_ctx_t *ctx, ec_autoload_t autoload);`
 
 Sets the autoload function that the context will use when trying to locate certificates it doesn't have available in its internal store.
+
+This can be used to e.g. load certificates from disk, via a network connection etc.
+
+```c
+#include <ec.h>
+...
+ec_cert_t *my_autoloader(ec_id_t id) {
+    ec_cert_t *c = //load cert from somewhere
+    return c;
+}
+
+ec_ctx_autoload(ctx, my_autoloader);
+...
+```
