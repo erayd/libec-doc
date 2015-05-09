@@ -1,3 +1,9 @@
-libec
-=====
+#libec
+
 Libec is a small PKI library leveraging [libsodium](https://github.com/jedisct1/libsodium).
+
+##Support
+For development support, questions etc. please use the [mailing list](https://groups.google.com/a/erayd.net/forum/#!forum/libec).
+
+##Licence
+Libec is available under the [ISC Licence](http://en.wikipedia.org/wiki/ISC_license). Please see the LICENCE file in the root of the project for more information.
