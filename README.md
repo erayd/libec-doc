@@ -3,6 +3,15 @@
 Libec is a small PKI library leveraging [libsodium](https://github.com/jedisct1/libsodium).
 
 ##Installation
+Libec requires the following runtime dependencies:
+
+Dependency|Version
+-|-
+libsodium|>=1.0.0
+talloc|>=2.0.0
+
+To install, run the following commands:
+
 ```bash
 $ git clone https://github.com/erayd/libec.git
 $ cd libec
