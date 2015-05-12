@@ -2,14 +2,14 @@
 
 ```c
 #include <ec.h>
-...
+
 int main(void) {
     if(ec_init() != 0) {
         //init failed
     }
     ...
 }
-...
+
 ```
 
 `ec.h` is the only header required, and declares all user-accessible functionality. `-lec` will link to it.
