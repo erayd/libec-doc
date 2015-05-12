@@ -7,8 +7,8 @@ Libec requires the following runtime dependencies:
 
 Dependency|Version
 -|-
-libsodium|>=1.0.0
-talloc|>=2.0.0
+[libsodium](http://www.libsodium.org)|>=1.0.0
+[talloc](https://talloc.samba.org)|>=2.0.0
 
 To install, run the following commands:
 
