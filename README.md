@@ -1,6 +1,6 @@
 #libec
 
-Libec is a small PKI library leveraging [libsodium](https://github.com/jedisct1/libsodium).
+Libec is a small PKI library leveraging the crypto routines available in [libsodium](http://www.libsodium.org/).
 
 ##Installation
 Libec requires the following runtime dependencies:
