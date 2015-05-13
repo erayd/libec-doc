@@ -7,6 +7,6 @@
 * [Contexts](chapters/contexts.md)
 * [Roles & Grants](chapters/roles_&_grants.md)
 * [Export & Import](chapters/export_&_import.md)
-* Channels
+* [Channels](chapters/channels.md)
 * [Misc](chapters/misc.md)
 
