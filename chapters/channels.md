@@ -42,4 +42,27 @@ if(ec_channel_start(ch, dh, EC_CHECK_ALL) != 0) {
 ...
 ```
 
+##ec_channel_encrypt()
+`ec_err_t ec_channel_encrypt(ec_channel_t *ch, unsigned char *buf, size_t len,`  
+`unsigned char *mac, uint64_t *ctr);`
+
+Encrypt a buffer, for later decryption by the remote end of a channel. Returns zero on success, a nonzero error code otherwise.
+
+A MAC (`EC_CHANNEL_MAC_BYTES` bytes) for the message will be stored in `*mac`, and the message sequence number will be stored in `*ctr` if `ctr` is not NULL.
+
+```c
+#include <ec.h>
+...
+unsigned char mac[EC_CHANNEL_MAC_BYTES];
+uint64_t ctr;
+if(ec_channel_encrypt(ch, buf, buf_length, mac, &ctr) != 0) {
+    //encryption failed
+}
+...
+```
+
+##ec_channel_decrypt()
+`ec_err_t ec_channel_decrypt(ec_channel_t *ch, unsigned char *buf, size_t len,`  
+`unsigned char *mac, uint64_t ctr);`
+
 **This page is still a work in progress, but should be finished within the next few hours. Please check back later.*
