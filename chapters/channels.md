@@ -79,3 +79,18 @@ if(ec_cert_decrypt(ch, buf, buf_length, mac, 0) != 0) {
 }
 ...
 ```
+
+##ec_channel_remote()
+`ec_cert_t *ec_channel_remote(ec_channel_t *ch);`
+
+Get the certificate for the remote channel endpoint. Returns NULL on failure.
+
+```c
+#include <ec.h>
+...
+ec_cert_t *c = ec_channel_remote(ch);
+if(c == NULL) {
+    //unable to get remote certificate
+}
+...
+```
