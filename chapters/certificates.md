@@ -138,7 +138,7 @@ Decrypt a certificate's secret key using a password. Returns zero on success, or
 
 If the secret key is decrypted successfully, then EC_CERT_CRYPTSK will be cleared.
 
-Note that using an incorrect password is not considered an error, but the resulting secret key will be unusable, and any attempts to use it to sign something will fail.
+Note that using an incorrect password is not considered an error, but the resulting secret key will be unusable, and any attempts to sign something with it will fail.
 
 ```c
 #include <ec.h>
