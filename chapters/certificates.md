@@ -147,3 +147,4 @@ if(ec_cert_unlock(c, "mySuperSecretPassword") != 0) {
     //unable to decrypt secret key
 }
 ...
+```
