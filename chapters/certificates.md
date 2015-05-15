@@ -114,3 +114,36 @@ if(list == NULL) {
 }
 ...
 ```
+
+##ec_cert_lock()
+`ec_err_t ec_cert_lock(ec_cert_t *c, char *password);`
+
+Encrypt a certificate's secret key using a password. Returns zero on success, or a nonzero error code otherwise.
+
+If the secret key is encrypted successfully, EC_CERT_CRYPTSK will be set.
+
+```c
+#include <ec.h>
+...
+if(ec_cert_lock(c, "mySuperSecretPassword") != 0) {
+    //unable to encrypt secret key
+}
+...
+```
+
+##ec_cert_unlock()
+``ec_err_t ec_cert_unlock(ec_cert_t *c, char *password);`
+
+Decrypt a certificate's secret key using a password. Returns zero on success, or a nonzero error code otherwise. If the secret key is not encrypted, then this function will take no action and return zero anyway.
+
+If the secret key is decrypted successfully, then EC_CERT_CRYPTSK will be cleared.
+
+Note that using an incorrect password is not considered an error, but the resulting secret key will be unusable, and any attempts to use it to sign something will fail.
+
+```c
+#include <ec.h>
+...
+if(ec_cert_unlock(c, "mySuperSecretPassword") != 0) {
+    //unable to decrypt secret key
+}
+...
