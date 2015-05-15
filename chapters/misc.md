@@ -16,6 +16,18 @@ if(ec_init() == 0) {
 ...
 ```
 
+##ec_version()
+`char *ec_version(void);`
+
+Returns the version of libec in use. This function is guaranteed to return a valid string.
+
+```c
+#include <ec.h>
+...
+printf("Libec version: %s\n", ec_version());
+...
+```
+
 ##ec_errstr()
 `char *ec_errstr(ec_err_t error);`
 
