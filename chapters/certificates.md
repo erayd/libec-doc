@@ -132,7 +132,7 @@ if(ec_cert_lock(c, "mySuperSecretPassword") != 0) {
 ```
 
 ##ec_cert_unlock()
-``ec_err_t ec_cert_unlock(ec_cert_t *c, char *password);`
+`ec_err_t ec_cert_unlock(ec_cert_t *c, char *password);`
 
 Decrypt a certificate's secret key using a password. Returns zero on success, or a nonzero error code otherwise. If the secret key is not encrypted, then this function will take no action and return zero anyway.
 
