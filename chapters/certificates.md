@@ -4,7 +4,19 @@ Certificates are represented by the `ec_cert_t` type, and are created by `ec_cer
 
 If a certificate has been saved using `ec_ctx_save()`, then it will be destroyed automatically once it is removed, overwritten, or the context it was saved to is destroyed.
 
-##ec_cert_create()
+##API
+
+ * [ec_cert_create()](#ec-cert-create)
+ * [ec_cert_copy()](#ec-cert-copy)
+ * [ec_cert_destroy()](#ec-cert-destroy)
+ * [ec_cert_sign()](#ec-cert-sign)
+ * [ec_cert_check()](#ec-cert-check)
+ * [ec_cert_id()](#ec-cert-id)
+ * [ec_cert_records()](#ec-cert-records)
+ * [ec_cert_lock()](#ec-cert-lock)
+ * [ec_cert_unlock()](#ec-cert-unlock)
+
+###ec_cert_create()
 `ec_cert_t *ec_cert_create(time_t valid_from, time_t valid_until);`
 
 Create a new certificate, and return a pointer to it. Returns NULL on failure. `valid_from` and `valid_until` define the certificate's validity period - if the validity period does not fall entirely within the valitity period of its signer, then the timestamp which violates this constraint will be adjusted to match that of the signer.
@@ -23,7 +35,7 @@ ec_cert_t *c = ec_cert_create(from, until);
 ...
 ```
 
-##ec_cert_copy()
+###ec_cert_copy()
 `ec_cert_t *ec_cert_copy(ec_cert_t *c);`
 
 Copy a certificate. Returns a new copy of `c`, or NULL on failure.
@@ -38,7 +50,7 @@ if(c == NULL) {
 ...
 ```
 
-##ec_cert_destroy()
+###ec_cert_destroy()
 `void ec_cert_destroy(ec_cert_t *c);`
 
 Destroy a certificate previously created with `ec_cert_create()`.
@@ -49,7 +61,7 @@ Destroy a certificate previously created with `ec_cert_create()`.
 ec_cert_destroy(c);
 ...
 ```
-##ec_cert_sign()
+###ec_cert_sign()
 `ec_err_t ec_cert_sign(ec_cert_t *c, ec_cert_t *signer);`
 
 Sign a certificate using another certificate. Returns a nonzero error code on failure.
@@ -71,7 +83,7 @@ if(ec_cert_sign(c, signer) != 0) {
 ...
 ```
 
-##ec_cert_check()
+###ec_cert_check()
 `ec_err_t ec_cert_check(ec_ctx_t *ctx, ec_cert_t *c, int flags);`
 
 Ensure that a certificate passes a given set of tests. Returns a nonzero error code on failure.
@@ -102,7 +114,7 @@ if(ec_cert_check(ctx, c, EC_CHECK_CERT | EC_CHECK_ROLE) != 0) {
 ...
 ```
 
-##ec_cert_id()
+###ec_cert_id()
 `ec_id_t ec_cert_id(ec_cert_t *c);`
 
 Get a unique ID for a certificate. This ID is based on the certificate's public key, and will not change if the certificate is modified by e.g. signing, adding records etc.
@@ -116,7 +128,7 @@ ec_id_t id = ec_cert_id(c);
 ...
 ```
 
-##ec_cert_records()
+###ec_cert_records()
 `ec_record_t *ec_cert_records(ec_cert_t *c);`
 
 Get the records list for a certificate. Returns NULL if there are no records present.
@@ -131,7 +143,7 @@ if(list == NULL) {
 ...
 ```
 
-##ec_cert_lock()
+###ec_cert_lock()
 `ec_err_t ec_cert_lock(ec_cert_t *c, char *password);`
 
 Encrypt a certificate's secret key using a password. Returns zero on success, or a nonzero error code otherwise.
@@ -147,7 +159,7 @@ if(ec_cert_lock(c, "mySuperSecretPassword") != 0) {
 ...
 ```
 
-##ec_cert_unlock()
+###ec_cert_unlock()
 `ec_err_t ec_cert_unlock(ec_cert_t *c, char *password);`
 
 Decrypt a certificate's secret key using a password. Returns zero on success, or a nonzero error code otherwise. If the secret key is not encrypted, then this function will take no action and return zero anyway.
