@@ -6,7 +6,21 @@ Records are organised by section. Each section begins with a 'section header' re
 
 Section names beginning with an underscore are reserved for internal use by the library.
 
-##ec_record()
+##API
+
+ * [ec_record()](#ec-record)
+ * [ec_record_bin()](#ec-record-bin)
+ * [ec_record_str()](#ec-record-str)
+ * [ec_record_destroy()](#ec-record-destroy)
+ * [ec_add()](#ec-add)
+ * [ec_match()](#ec-match)
+ * [ec_match_bin()](#ec-match-bin)
+ * [ec_match_str()](#ec-match-str)
+ * [ec_set()](#ec-set)
+ * [ec_get()](#ec-get)
+ * [ec_record_section()](#ec-record-section)
+
+###ec_record()
 `ec_record_t *ec_record(uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
 
 Create a new record. Returns a pointer to the new record, or NULL on failure. `key` must be a NULL-terminated string.
@@ -36,17 +50,17 @@ if(r == NULL) {
 ...
 ```
 
-##ec_record_bin()
+###ec_record_bin()
 `ec_record_t *ec_record_bin(uint16_t flags, unsigned char *key, uint8_t key_len, unsigned char *data, uint16_t data_len);`
 
 Identical to `ec_record()`, except using a binary key.
 
-##ec_record_str()
+###ec_record_str()
 `ec_record_t *ec_record_str(uint16_t flags, char *key, char *data);`
 
 Identical to `ec_record()`, except data is a NULL-terminated string.
 
-##ec_record_destroy()
+###ec_record_destroy()
 `void ec_record_destroy(ec_record_t *r);`
 
 Destroy a record. If EC_RECORD_KFREE / EC_RECORD_DFREE are set, then also free the record's key / data respectively.
@@ -58,7 +72,7 @@ ec_record_destroy(r);
 ...
 ```
 
-##ec_add()
+###ec_add()
 `ec_record_t *ec_add(ec_cert_t *c, char *section, ec_record_t *r);`
 
 Add a record to a certificate. Returns `r` on success, NULL otherwise.
@@ -74,7 +88,7 @@ if(ec_add(c, "my_section", my_record) == NULL) {
 ...
 ```
 
-##ec_match()
+###ec_match()
 `ec_record_t *ec_match(ec_record_t *start, char *section, uint16_t flags, char *key, unsigned char *data,`  
   `uint16_t data_len);`
   
@@ -91,23 +105,23 @@ if(r != NULL) {
 ...
 ```
 
-##ec_match_bin()
+###ec_match_bin()
 `ec_record_t *ec_match_bin(ec_record_t *start, char *section, uint16_t flags, unsigned char *key, uint8_t key_len,`  
   `unsigned char *data, uint16_t data_len);`
 
 Identical to `ec_match()`, except using a binary key.
 
-##ec_match_str()
+###ec_match_str()
 `ec_record_t *ec_match_str(ec_record_t *start, char *section, uint16_t flags, char *key, char *data);`
 
 Identical to `ec_match()`, except data is a NULL-terminated string.
 
-##ec_set()
+###ec_set()
 `ec_record_t *ec_set(ec_cert_t *c, char *section, uint16_t flags, char *key, char *data);`
 
 Identical to `ec_add(c, section, ec_record_str(flags, key, data));`
 
-##ec_get()
+###ec_get()
 `char *ec_get(ec_record_t *start, char *section, uint16_t flags, char *key);`
 
 Get the NULL-terminated data field from a matching record. Returns NULL if not found, or if the data field is not NULL-terminated.
@@ -123,7 +137,7 @@ if(s != NULL) {
 ...
 ```
 
-##ec_record_section()
+###ec_record_section()
 `char *ec_record_section(ec_record_t *r);`
 
 Get the name for the section to which the record belongs. Returns the section name if present, or NULL if the record is not associated with a section, or is a section header.
