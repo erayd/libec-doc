@@ -67,7 +67,7 @@ All arguments to the validator are guaranteed to be present and correct, and the
 #include <ec.h>
 ...
 int my_validator(ec_ctx_t *ctx, ec_cert_t *c, ec_record_t *r) {
-    if(record_relates_to_goldfish())
+    if(record_relates_to_goldfish(r))
         return 0;
     else
         return 1;
