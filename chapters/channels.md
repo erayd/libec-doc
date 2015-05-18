@@ -2,7 +2,15 @@
 
 Libec uses channels to implement secure communication between two entities. Data is encrypted and protected with a MAC.
 
-##ec_channel_init()
+##API
+
+ * [ec_channel_init()](#ec-channel-init)
+ * [ec_channel_start()](#ec-channel-start)
+ * [ec_channel_encrypt()](#ec-channel-encrypt)
+ * [ec_channel_decrypt()](#ec-channel-decrypt)
+ * [ec_channel_remote()](#ec-channel-remote)
+
+###ec_channel_init()
 `ec_err_t ec_channel_init(ec_channel_t *ch, ec_cert_t *c, ec_ctx_t *ctx, unsigned char *dh);`
 
 Initialise a channel and generate a signed Diffie-Hellman packet to pass to the remote endpoint. Returns zero on success, a nonzero error code otherwise.
@@ -24,7 +32,7 @@ if(ec_channel_init(ch, c, ctx, dh) != 0) {
 ...
 ```
 
-##ec_channel_start()
+###ec_channel_start()
 `ec_err_t ec_channel_start(ec_channel_t *ch, unsigned char *dh, int checks);`
 
 Finish Diffie-Hellman negotiation and finalise channel setup. Returns zero on success, a nonzero error code otherwise.
@@ -42,7 +50,7 @@ if(ec_channel_start(ch, dh, EC_CHECK_ALL) != 0) {
 ...
 ```
 
-##ec_channel_encrypt()
+###ec_channel_encrypt()
 `ec_err_t ec_channel_encrypt(ec_channel_t *ch, unsigned char *buf, size_t len,`  
 `unsigned char *mac, uint64_t *ctr);`
 
@@ -61,7 +69,7 @@ if(ec_channel_encrypt(ch, buf, buf_length, mac, &ctr) != 0) {
 ...
 ```
 
-##ec_channel_decrypt()
+###ec_channel_decrypt()
 `ec_err_t ec_channel_decrypt(ec_channel_t *ch, unsigned char *buf, size_t len,`  
 `unsigned char *mac, uint64_t ctr);`
 
@@ -80,7 +88,7 @@ if(ec_cert_decrypt(ch, buf, buf_length, mac, 0) != 0) {
 ...
 ```
 
-##ec_channel_remote()
+###ec_channel_remote()
 `ec_cert_t *ec_channel_remote(ec_channel_t *ch);`
 
 Get the certificate for the remote channel endpoint. Returns NULL on failure.
