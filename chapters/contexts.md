@@ -6,6 +6,7 @@ Contexts are automatically used when checking a certificate's signer, trust chai
 When a context is destroyed, all associated certificates are also destroyed at the same time.
 
 ##API
+
  * [ec_ctx_create()](#ec-ctx-create)
  * [ec_ctx_destroy()](#ec-ctx-destroy)
  * [ec_ctx_autoload()](#ec-ctx-autoload)
