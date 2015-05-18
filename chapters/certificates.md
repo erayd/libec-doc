@@ -100,7 +100,7 @@ EC_CHECK_SIGN||Yes<sup>1</sup>|Signer ID is present, signature is present, signe
 EC_CHECK_CHAIN<sup>2</sup>|EC_CHECK_SIGN|Yes|Certificate is not self-signed, signer also passes every check that certificate is required to pass, except for EC_CHECK_SECRET.
 EC_CHECK_ROLE|EC_CHECK_CHAIN|Yes|Grant records have a valid string key, grant records match or are a subset of the signer's grant records unless EC_CERT_TRUSTED is set, role records have a valid string key, role records match or are a subset of the signer's grant records unless EC_CERT_TRUSTED is set.
 EC_CHECK_REQUIRE||Yes|A validator function has been set, all records with EC_RECORD_REQUIRE are considered acceptable by the validator.
-EC_CHECK_ALL|-|Yes|Every check listed above except for EC_CHECK_SECRET.
+EC_CHECK_ALL||Yes|Every check listed above except for EC_CHECK_SECRET.
 
 
 <sup>1</sup> Context is not required if the certificate is self-signed.  
