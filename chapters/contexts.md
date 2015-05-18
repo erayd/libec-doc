@@ -5,7 +5,16 @@ Contexts are automatically used when checking a certificate's signer, trust chai
 
 When a context is destroyed, all associated certificates are also destroyed at the same time.
 
-##ec_ctx_create()
+##API
+ * [ec_ctx_create()](#ec-ctx-create)
+ * [ec_ctx_destroy()](#ec-ctx-destroy)
+ * [ec_ctx_autoload()](#ec-ctx-autoload)
+ * [ec_ctx_validator()](#ec-ctx-validator)
+ * [ec_ctx_next()](#ec-ctx-next)
+ * [ec_ctx_save()](#ec-ctx-save)
+ * [ec_ctx_cert()](ec-ctx-cert)
+
+###ec_ctx_create()
 `ec_ctx_t *ec_ctx_create(void);`
 
 Creates a new context. Returns `NULL` on failure.
@@ -22,7 +31,7 @@ if(ctx != NULL) {
 ...
 ```
 
-##ec_ctx_destroy()
+###ec_ctx_destroy()
 `void ec_ctx_destroy(ec_ctx_t *ctx);`
 
 Destroys a context previously created with `ec_ctx_create()`.
@@ -34,7 +43,7 @@ ec_ctx_destroy(ctx);
 ...
 ```
 
-##ec_ctx_autoload()
+###ec_ctx_autoload()
 `typedef ec_cert_t *(*ec_autoload_t)(ec_id_t id);`  
 `void ec_ctx_autoload(ec_ctx_t *ctx, ec_autoload_t autoload);`
 
@@ -54,7 +63,7 @@ ec_ctx_autoload(ctx, my_autoloader);
 ...
 ```
 
-##ec_ctx_validator()
+###ec_ctx_validator()
 `void ec_ctx_validator(ec_ctx_t *ctx, ec_record_validator_t validator);`
 
 Sets the validator function used to check whether records with `EC_RECORD_REQUIRE` are acceptable. The validator function should return zero for acceptable, nonzero otherwise.
@@ -77,7 +86,7 @@ ec_ctx_validator(ctx, my_validator);
 ...
 ```
 
-##ec_ctx_next()
+###ec_ctx_next()
 `ec_ctx_t *ec_ctx_next(ec_ctx_t *ctx, ec_ctx_t *next);`
 
 Sets the next context to search when attempting to load a certificate from the context's internal store. Always returns `next`.
@@ -91,7 +100,7 @@ ec_ctx_next(ctx, my_other_ctx);
 ...
 ```
 
-##ec_ctx_save()
+###ec_ctx_save()
 `ec_cert_t *ec_ctx_save(ec_ctx_t *ctx, ec_cert_t *c);`
 
 Saves a certificate in the context's internal store, and returns a pointer to the certificate. Returns NULL on failure.
@@ -107,7 +116,7 @@ if(ec_ctx_save(ctx, c) == NULL) {
 ...
 ```
 
-##ec_ctx_cert()
+###ec_ctx_cert()
 `ec_cert_t *ec_ctx_cert(ec_ctx_t *ctx, ec_id_t id);`
 
 Loads a certificate from the context's internal store. Returns NULL on failure (e.g. if a certificate is not found).
