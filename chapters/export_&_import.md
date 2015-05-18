@@ -4,7 +4,16 @@ Certificates may be exported / imported in either binary or base64-encoded form.
 
 A certificate's secret key will ***not*** be exported unless EC_EXPORT_SECRET is set, but will always be imported if available.
 
-##ec_export_len()
+##API
+
+ * [ec_export_len()](#ec-export-len)
+ * [ec_export_len_64()](#ec-export-len-64)
+ * [ec_export()](#ec-export)
+ * [ec_export_64()](#ec-export-64)
+ * [ec_import()](#ec-import)
+ * [ec_import_64()](#ec-import-64)
+
+###ec_export_len()
 `uint16_t ec_export_len(ec_cert_t *c, uint8_t export_flags);`
 
 Get the buffer length required to export a certificate with the given flags.
@@ -16,12 +25,12 @@ unsigned char buf[ec_export_len(c, EC_EXPORT_SECRET)];
 ...
 ```
 
-##ec_export_len_64
+###ec_export_len_64
 `size_t ec_export_len_64(ec_cert_t *c, uint8_t export_flags);`
 
 Identical to `ec_export_len()`, except returns the buffer length required to export to base64.
 
-##ec_export()
+###ec_export()
 `size_t ec_export(unsigned char *dest, ec_cert_t *c, uint8_t export_flags);`
 
 Export a certificate to the given buffer. Returns the number of bytes written to the buffer, or zero on failure.
@@ -36,12 +45,12 @@ if(bytes_written == 0) {
 ...
 ```
 
-##ec_export_64()
+###ec_export_64()
 `char *ec_export_64(char *dest, ec_cert_t *c, uint8_t export_flags);`
 
 Identical to `ec_export()`, except that the certificate is base64-encoded and armoured before writing to `dest`.
 
-##ec_import()
+###ec_import()
 `ec_cert_t *ec_import(unsigned char *src, size_t length, size_t *consumed);`
 
 Import a certificate from a buffer. Returns a certificate on success, or NULL otherwise.
@@ -60,7 +69,7 @@ if(c != NULL) {
 ...
 ```
 
-##ec_import_64()
+###ec_import_64()
 `ec_cert_t *ec_import_64(char *src, size_t length, size_t *consumed);`
 
 Identical to `ec_import()`, except interprets the buffer as armoured and base64-encoded. The certificate may be present at any offset in the buffer, provided that the envelope is intact.
