@@ -12,7 +12,14 @@ This means that a certificate may also delegate granting authority for any role 
 
 A certificate with the flag `EC_CERT_TRUSTED` may define any role or grant, with no higher authority required to validate it. Such roles and grants must be explicitly defined in the certificate; by default a certificate defines nothing at all.
 
-##ec_role_add()
+##API
+
+ * [ec_role_add()](#ec-role-add)
+ * [ec_role_grant()](#ec-role-grant)
+ * [ec_role_has()](#ec-role-has)
+ * [ec_role_has_grant()](#ec-role-has-grant)
+
+###ec_role_add()
 `ec_record_t *ec_role_add(ec_cert_t *c, char *role);`
 
 Add a role to a certificate. Returns the new role record on success, NULL otherwise. The created record will be automatically freed when the certificate is destroyed.
@@ -27,7 +34,7 @@ if(r == NULL) {
 ...
 ```
 
-##ec_role_grant()
+###ec_role_grant()
 `ec_record_t *ec_role_grant(ec_cert_t *c, char *role);`
 
 Allow a certificate to grant a role. Returns the new grant record on success, NULL otherwise. The created record will be automatically freed when the certificate is destroyed.
@@ -42,7 +49,7 @@ if(g == NULL) {
 ...
 ```
 
-##ec_role_has()
+###ec_role_has()
 `ec_err_t ec_role_has(ec_cert_t *c, char *role);`
 
 Check whether a certificate holds the given role. Returns EC_OK on success, or a nonzero error code otherwise.
@@ -58,7 +65,7 @@ if(ec_role_has(c, "com.example.myPond") == EC_OK) {
 ...
 ```
 
-##ec_role_has_grant()
+###ec_role_has_grant()
 `ec_err_t ec_role_has_grant(ec_cert_t *c, char *role);`
 
 Check whether a certificate is allowed to grant the given role. This does ***not*** imply that the certificate also holds this role; grants and roles may be held independantly.
