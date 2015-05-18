@@ -42,9 +42,11 @@ if(bytes_written == 0) {
 Identical to `ec_export()`, except that the certificate is base64-encoded and armoured before writing to `dest`.
 
 ##ec_import()
-`ec_cert_t *ec_import(unsigned char *src, size_t length);`
+`ec_cert_t *ec_import(unsigned char *src, size_t length, size_t *consumed);`
 
 Import a certificate from a buffer. Returns a certificate on success, or NULL otherwise.
+
+If `consumed` is not NULL, then the number of bytes consumed from `src` will be stored there. On error, this value is considered undefined.
 
 The certificate is tested with `EC_CHECK_CERT` before returning - if it does not pass, the import is considered to have failed and NULL is returned. 
 
@@ -59,6 +61,6 @@ if(c != NULL) {
 ```
 
 ##ec_import_64()
-`ec_cert_t *ec_import_64(char *src, size_t length);`
+`ec_cert_t *ec_import_64(char *src, size_t length, size_t *consumed);`
 
 Identical to `ec_import()`, except interprets the buffer as armoured and base64-encoded. The certificate may be present at any offset in the buffer, provided that the envelope is intact.
