@@ -49,8 +49,31 @@ ec_cert_t *my_autoloader(ec_id_t id) {
     ec_cert_t *c = //load cert from somewhere
     return c;
 }
-
+...
 ec_ctx_autoload(ctx, my_autoloader);
+...
+```
+
+##ec_ctx_validator()
+`void ec_ctx_validator(ec_ctx_t *ctx, ec_record_validator_t validator);`
+
+Sets the validator function used to check whether records with `EC_RECORD_REQUIRE` are acceptable. The validator function should return zero for acceptable, nonzero otherwise.
+
+A validator function *must* be set in order to use `EC_CHECK_REQUIRE`. The validator must reject as failed any records it does not understand.
+
+All arguments to the validator are guaranteed to be present and correct, and the certificate will have passed at least `EC_CHECK_CERT` before the validator is run.
+
+```c
+#include <ec.h>
+...
+int my_validator(ec_ctx_t *ctx, ec_cert_t *c, ec_record_t *r) {
+    if(record_relates_to_goldfish())
+        return 0;
+    else
+        return 1;
+}
+...
+ec_ctx_validator(ctx, my_validator);
 ...
 ```
 
