@@ -23,6 +23,21 @@ ec_cert_t *c = ec_cert_create(from, until);
 ...
 ```
 
+##ec_cert_copy()
+`ec_cert_t *ec_cert_copy(ec_cert_t *c);`
+
+Copy a certificate. Returns a new copy of `c`, or NULL on failure.
+
+```c
+#include <ec.h>
+...
+ec_cert_t *c2 = ec_cert_copy(c1);
+if(c == NULL) {
+    //failed to copy certificate
+}
+...
+```
+
 ##ec_cert_destroy()
 `void ec_cert_destroy(ec_cert_t *c);`
 
