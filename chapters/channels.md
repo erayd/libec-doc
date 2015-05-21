@@ -4,16 +4,29 @@ Libec uses channels to implement secure communication between two entities. Data
 
 ##API
 
+ * [ec_channel_clean()](#ec-channel-clean)
  * [ec_channel_init()](#ec-channel-init)
  * [ec_channel_start()](#ec-channel-start)
  * [ec_channel_encrypt()](#ec-channel-encrypt)
  * [ec_channel_decrypt()](#ec-channel-decrypt)
  * [ec_channel_remote()](#ec-channel-remote)
 
+###ec_channel_clean()
+`void ec_channel_clean(ec_channel_t *ch);
+
+Clean a previously used channel for reuse or free. Unlocks locked memory and zeros entire structure. Should be run once a channel is no longer required, before disposing of the channel.
+
+```c
+#include <ec.h>
+...
+ec_channel_clean(ch);
+...
+```
+
 ###ec_channel_init()
 `ec_err_t ec_channel_init(ec_channel_t *ch, ec_cert_t *c, ec_ctx_t *ctx, unsigned char *dh);`
 
-Initialise a channel and generate a signed Diffie-Hellman packet to pass to the remote endpoint. Returns zero on success, a nonzero error code otherwise.
+Initialise a channel and generate a signed Diffie-Hellman packet to pass to the remote endpoint. Returns zero on success, a nonzero error code otherwise. Once the channel is no longer required, it should be scrubbed using `ec_channel_clean()`.
 
 `ctx` should point to a context where the remote certificate can be found, and will be used for validation purposes - if trust chain checks are performed, then those certificates will also need to be available.
 
