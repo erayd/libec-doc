@@ -9,6 +9,7 @@ If a certificate has been saved using `ec_ctx_save()`, then it will be destroyed
  * [ec_cert_create()](#ec-cert-create)
  * [ec_cert_copy()](#ec-cert-copy)
  * [ec_cert_destroy()](#ec-cert-destroy)
+ * [ec_cert_strip()](#ec-cert-strip)
  * [ec_cert_sign()](#ec-cert-sign)
  * [ec_cert_check()](#ec-cert-check)
  * [ec_cert_id()](#ec-cert-id)
@@ -61,6 +62,25 @@ Destroy a certificate previously created with `ec_cert_create()`.
 ec_cert_destroy(c);
 ...
 ```
+
+###ec_cert_strip()
+`void ec_cert_strip(ec_cert_t *c, int what);`
+
+Strip unwanted data from a certificate, specified by `when`. Possible flags are listed below:
+
+Flag|Removed Data
+-|-
+EC_STRIP_SECRET|Secret key
+EC_STRIP_RECORD|All records with EC_RECORD_NOSIGN set
+EC_STRIP_SIGN|Signer ID & signature
+
+```c
+#include <ec.h>
+...
+ec_cert_strip(c, EC_STRIP_SECRET | EC_STRIP_RECORD);
+...
+```
+
 ###ec_cert_sign()
 `ec_err_t ec_cert_sign(ec_cert_t *c, ec_cert_t *signer);`
 
