@@ -13,6 +13,7 @@ When a context is destroyed, all associated certificates are also destroyed at t
  * [ec_ctx_validator()](#ec-ctx-validator)
  * [ec_ctx_next()](#ec-ctx-next)
  * [ec_ctx_save()](#ec-ctx-save)
+ * [ec_ctx_remove()](#ec-ctx-remove)
  * [ec_ctx_cert()](ec-ctx-cert)
 
 ###ec_ctx_create()
@@ -113,6 +114,23 @@ Saving a certificate transfers its ownership to the context, and it will be auto
 ...
 if(ec_ctx_save(ctx, c) == NULL) {
     //failed to save certificate
+}
+...
+```
+
+###ec_ctx_remove()
+`ec_cert_t *ec_ctx_remove(ec_ctx_t *ctx, ec_id_t id);`
+
+Remove a certificate from the context store. Returns the certificate if present, NULL otherwise.
+
+Once a certificate has been removed from its context, the user is now responsible for destroying it with `ec_cert_destroy()` once it is no longer required.
+
+```c
+#include <ec.h>
+...
+ec_cert_t *c = ec_ctx_remove(ctx, my_cert_id);
+if(c != NULL) {
+    //certificate was present
 }
 ...
 ```
