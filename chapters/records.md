@@ -6,6 +6,8 @@ Records are organised by section. Each section begins with a 'section header' re
 
 Section names beginning with an underscore are reserved for internal use by the library.
 
+If a section name is prefixed by '$', then all records in that section (including the section header) *must* be signed. Certificates containing a NOSIGN record in such a section will not validate.
+
 ##API
 
  * [ec_record()](#ec-record)
