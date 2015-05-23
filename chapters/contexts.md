@@ -15,6 +15,7 @@ When a context is destroyed, all associated certificates are also destroyed at t
  * [ec_ctx_save()](#ec-ctx-save)
  * [ec_ctx_remove()](#ec-ctx-remove)
  * [ec_ctx_cert()](ec-ctx-cert)
+ * [ec_ctx_anchor()](#ec-ctx-anchor)
 
 ###ec_ctx_create()
 `ec_ctx_t *ec_ctx_create(void);`
@@ -150,6 +151,23 @@ If an additional search context has been defined using `ec_ctx_next()`, that con
 ec_cert_t *c = ec_ctx_cert(c, my_cert_id);
 if(c != NULL) {
     //certificate loaded OK
+}
+...
+```
+
+###ec_ctx_anchor()
+`ec_cert_t *ec_ctx_anchor(ec_ctx_t *ctx, ec_cert_t *c);`
+
+Get the trust anchor for a certificate. Returns NULL on failure.
+
+If `c` does not pass EC_CHECK_CHAIN, this is considered an error. The same search method as `ec_ctx_cert()` is used to find the CA certificate.
+
+```c
+#include <ec.h>
+...
+ec_cert_t *ca = ec_ctx_anchor(ctx, c);
+if(ca == NULL) {
+    //unable to get CA
 }
 ...
 ```
