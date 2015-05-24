@@ -10,16 +10,16 @@ If a section name is prefixed by '$', then all records in that section (includin
 
 ##API
 
- * [ec_record_create()](#ec-record)
+ * [ec_record_create()](#ec-record-create)
  * [ec_record_bin()](#ec-record-bin)
  * [ec_record_str()](#ec-record-str)
  * [ec_record_destroy()](#ec-record-destroy)
- * [ec_record_add()](#ec-add)
- * [ec_record_match()](#ec-match)
- * [ec_record_match_bin()](#ec-match-bin)
- * [ec_record_match_str()](#ec-match-str)
- * [ec_record_set()](#ec-set)
- * [ec_record_get()](#ec-get)
+ * [ec_record_add()](#ec-record-add)
+ * [ec_record_match()](#ec-record-match)
+ * [ec_record_match_bin()](#ec-record-match-bin)
+ * [ec_record_match_str()](#ec-record-match-str)
+ * [ec_record_set()](#ec-record-set)
+ * [ec_record_get()](#ec-record-get)
  * [ec_record_section()](#ec-record-section)
 
 ###ec_record_create()
