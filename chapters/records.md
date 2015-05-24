@@ -116,7 +116,8 @@ if(r != NULL) {
 Identical to `ec_record_match()`, except using a binary key.
 
 ###ec_record_match_str()
-`ec_record_t *ec_match_str(ec_record_t *start, char *section, uint16_t flags, char *key, char *data);`
+`ec_record_t *ec_match_str(ec_record_t *start, char *section, uint16_t flags, char *key,`  
+  `char *data);`
 
 Identical to `ec_record_match()`, except data is a NULL-terminated string.
 
