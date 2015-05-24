@@ -23,7 +23,7 @@ If a section name is prefixed by '$', then all records in that section (includin
  * [ec_record_section()](#ec-record-section)
 
 ###ec_record_create()
-`ec_record_t *ec_record_create (uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
+`ec_record_t *ec_record_create(uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
 
 Create a new record. Returns a pointer to the new record, or NULL on failure. `key` must be a NULL-terminated string.
 
