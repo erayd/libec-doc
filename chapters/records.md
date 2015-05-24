@@ -18,6 +18,7 @@ If a section name is prefixed by '$', then all records in that section (includin
  * [ec_record_match()](#ec-record-match)
  * [ec_record_match_bin()](#ec-record-match-bin)
  * [ec_record_match_str()](#ec-record-match-str)
+ * [ec_record_next()](#ec-record-next)
  * [ec_record_set()](#ec-record-set)
  * [ec_record_get()](#ec-record-get)
  * [ec_record_section()](#ec-record-section)
@@ -120,6 +121,31 @@ Identical to `ec_record_match()`, except using a binary key.
   `char *key, char *data);`
 
 Identical to `ec_record_match()`, except data is a NULL-terminated string.
+
+###ec_record_next()
+`ec_record_t *ec_record_next(ec_record_t *start, int filter);`
+
+Get the next matching record in the same section. The next record that matches `start` is returned, or NULL if no matching record is found.
+
+`filter` specifies which aspects of a record must match, according to the following table:
+
+Filter | Description
+-|-
+EC_MATCH_FLAGS|Flags must match
+EC_MATCH_KEY|Key must match
+EC_MATCH_KEY_LEN|Key length must match
+EC_MATCH_DATA|Data must match
+EC_MATCH_DATA_LEN|Data length must match
+
+```c
+#include <ec.h>
+...
+ec_record_t *next = ec_record_next(r, EC_MATCH_FLAGS | EC_MATCH_KEY);
+if(next !== NULL) {
+    //found a matching record
+}
+...
+```
 
 ###ec_record_set()
 `ec_record_t *ec_record_set(ec_cert_t *c, char *section, uint16_t flags, char *key, char *data);`
