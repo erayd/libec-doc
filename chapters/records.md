@@ -27,7 +27,7 @@ If a section name is prefixed by '$', then all records in that section (includin
 
 Create a new record. Returns a pointer to the new record, or NULL on failure. `key` must be a NULL-terminated string.
 
-Records created with `ec_record()` must be freed using `ec_record_destroy()` once they are no longer required, unless they are attached to a certificate. All records attached to a certificate are automatically freed when the certificate is destroyed.
+Records created with `ec_record_create()` must be freed using `ec_record_destroy()` once they are no longer required, unless they are attached to a certificate. All records attached to a certificate are automatically freed when the certificate is destroyed.
 
 `flags` is used to set additional metadata on the record, according to the following table:
 
