@@ -45,7 +45,8 @@ EC_RECORD_DCOPY|The data for this record will be copied, rather than added by re
 ```c
 #include <ec.h>
 ...
-ec_record_t *r = ec_record_create(EC_RECORD_NOSIGN | EC_RECORD_DCOPY, "my_key", my_data, my_data_length);
+ec_record_t *r = ec_record_create(EC_RECORD_NOSIGN | EC_RECORD_DCOPY, "my_key", my_data,
+    my_data_length);
 if(r == NULL) {
     //failed to create record
 }
