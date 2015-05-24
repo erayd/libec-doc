@@ -93,7 +93,7 @@ if(ec_record_add(c, "my_section", my_record) == NULL) {
 
 ###ec_record_match()
 `ec_record_t *ec_record_match(ec_record_t *start, char *section, uint16_t flags, char *key,`  
-  `unsigned char *data, uint16_t data_len);`
+`   unsigned char *data, uint16_t data_len);`
   
 Find the first matching record in a record list. `key` must be a NULL-terminated string. All provided flags must be present in a record for it to match. `section` must be defined unless searching for a section header, in which case it should be NULL.
 
