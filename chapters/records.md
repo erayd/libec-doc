@@ -10,20 +10,20 @@ If a section name is prefixed by '$', then all records in that section (includin
 
 ##API
 
- * [ec_record()](#ec-record)
+ * [ec_record_create()](#ec-record)
  * [ec_record_bin()](#ec-record-bin)
  * [ec_record_str()](#ec-record-str)
  * [ec_record_destroy()](#ec-record-destroy)
- * [ec_add()](#ec-add)
- * [ec_match()](#ec-match)
- * [ec_match_bin()](#ec-match-bin)
- * [ec_match_str()](#ec-match-str)
- * [ec_set()](#ec-set)
- * [ec_get()](#ec-get)
+ * [ec_record_add()](#ec-add)
+ * [ec_record_match()](#ec-match)
+ * [ec_record_match_bin()](#ec-match-bin)
+ * [ec_record_match_str()](#ec-match-str)
+ * [ec_record_set()](#ec-set)
+ * [ec_record_get()](#ec-get)
  * [ec_record_section()](#ec-record-section)
 
-###ec_record()
-`ec_record_t *ec_record(uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
+###ec_record_create()
+`ec_record_t *ec_record_create (uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
 
 Create a new record. Returns a pointer to the new record, or NULL on failure. `key` must be a NULL-terminated string.
 
@@ -45,7 +45,7 @@ EC_RECORD_DCOPY|The data for this record will be copied, rather than added by re
 ```c
 #include <ec.h>
 ...
-ec_record_t *r = ec_record(EC_RECORD_NOSIGN | EC_RECORD_DCOPY, "my_key", my_data, my_data_length);
+ec_record_t *r = ec_record_create(EC_RECORD_NOSIGN | EC_RECORD_DCOPY, "my_key", my_data, my_data_length);
 if(r == NULL) {
     //failed to create record
 }
@@ -55,12 +55,12 @@ if(r == NULL) {
 ###ec_record_bin()
 `ec_record_t *ec_record_bin(uint16_t flags, unsigned char *key, uint8_t key_len, unsigned char *data, uint16_t data_len);`
 
-Identical to `ec_record()`, except using a binary key.
+Identical to `ec_record_create()`, except using a binary key.
 
 ###ec_record_str()
 `ec_record_t *ec_record_str(uint16_t flags, char *key, char *data);`
 
-Identical to `ec_record()`, except data is a NULL-terminated string.
+Identical to `ec_record_create()`, except data is a NULL-terminated string.
 
 ###ec_record_destroy()
 `void ec_record_destroy(ec_record_t *r);`
@@ -74,8 +74,8 @@ ec_record_destroy(r);
 ...
 ```
 
-###ec_add()
-`ec_record_t *ec_add(ec_cert_t *c, char *section, ec_record_t *r);`
+###ec_record_add()
+`ec_record_t *ec_record_add(ec_cert_t *c, char *section, ec_record_t *r);`
 
 Add a record to a certificate. Returns `r` on success, NULL otherwise.
 
@@ -84,15 +84,15 @@ The record will be added to the section referred to by `section`, and the sectio
 ```c
 #include <ec.h>
 ...
-if(ec_add(c, "my_section", my_record) == NULL) {
+if(ec_record_add(c, "my_section", my_record) == NULL) {
     //failed to add record
 }
 ...
 ```
 
-###ec_match()
-`ec_record_t *ec_match(ec_record_t *start, char *section, uint16_t flags, char *key, unsigned char *data,`  
-  `uint16_t data_len);`
+###ec_record_match()
+`ec_record_t *ec_record_match(ec_record_t *start, char *section, uint16_t flags, char *key,`  
+  `unsigned char *data, uint16_t data_len);`
   
 Find the first matching record in a record list. `key` must be a NULL-terminated string. All provided flags must be present in a record for it to match. `section` must be defined unless searching for a section header, in which case it should be NULL.
 
@@ -100,31 +100,32 @@ Find the first matching record in a record list. `key` must be a NULL-terminated
 #include <ec.h>
 ...
 ec_record_t *list = ec_cert_records(c);
-ec_record_t *r = ec_match(list, "my_section", EC_RECORD_NOSIGN, "my_record", NULL, 0);
+ec_record_t *r = ec_record_match(list, "my_section", EC_RECORD_NOSIGN,
+    "my_record", NULL, 0);
 if(r != NULL) {
     //found a matching record
 }
 ...
 ```
 
-###ec_match_bin()
-`ec_record_t *ec_match_bin(ec_record_t *start, char *section, uint16_t flags, unsigned char *key, uint8_t key_len,`  
-  `unsigned char *data, uint16_t data_len);`
+###ec_record_match_bin()
+`ec_record_t *ec_record_match_bin(ec_record_t *start, char *section, uint16_t flags, unsigned char *key,`  
+  `uint8_t key_len, unsigned char *data, uint16_t data_len);`
 
-Identical to `ec_match()`, except using a binary key.
+Identical to `ec_record_match()`, except using a binary key.
 
-###ec_match_str()
+###ec_record_match_str()
 `ec_record_t *ec_match_str(ec_record_t *start, char *section, uint16_t flags, char *key, char *data);`
 
-Identical to `ec_match()`, except data is a NULL-terminated string.
+Identical to `ec_record_match()`, except data is a NULL-terminated string.
 
-###ec_set()
-`ec_record_t *ec_set(ec_cert_t *c, char *section, uint16_t flags, char *key, char *data);`
+###ec_record_set()
+`ec_record_t *ec_record_set(ec_cert_t *c, char *section, uint16_t flags, char *key, char *data);`
 
-Identical to `ec_add(c, section, ec_record_str(flags, key, data));`
+Identical to `ec_record_add(c, section, ec_record_str(flags, key, data));`
 
-###ec_get()
-`char *ec_get(ec_record_t *start, char *section, uint16_t flags, char *key);`
+###ec_record_get()
+`char *ec_record_get(ec_record_t *start, char *section, uint16_t flags, char *key);`
 
 Get the NULL-terminated data field from a matching record. Returns NULL if not found, or if the data field is not NULL-terminated.
 
@@ -132,7 +133,7 @@ Get the NULL-terminated data field from a matching record. Returns NULL if not f
 #include <ec.h>
 ...
 ec_record_t *list = ec_cert_records(c);
-char *s = ec_get(list, "my_section", EC_RECORD_NOSIGN, "my_record");
+char *s = ec_record_get(list, "my_section", EC_RECORD_NOSIGN, "my_record");
 if(s != NULL) {
     //found a valid matching string
 }
