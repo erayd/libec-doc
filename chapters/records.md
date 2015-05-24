@@ -110,7 +110,7 @@ if(r != NULL) {
 ```
 
 ###ec_record_match_bin()
-`ec_record_t *ec_record_match_bin(ec_record_t *start, char *section, uint16_t flags,`
+`ec_record_t *ec_record_match_bin(ec_record_t *start, char *section, uint16_t flags,`  
     `unsigned char *key, uint8_t key_len, unsigned char *data, uint16_t data_len);`
 
 Identical to `ec_record_match()`, except using a binary key.
