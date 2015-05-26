@@ -21,6 +21,20 @@ $ make check
 # make install
 ```
 
+##Build requirements
+###OSX
+In order to build libec on OSX, the following additional built-time dependencies are required:
+
+ * XCode
+ * autoconf
+ * automake
+ * libtool
+ * pkg-config
+ 
+autoconf, automake, libtool, pkg-config, libsodium, and talloc are all available via homebrew (`brew install <package>`). If you don't have homebrew installed, please see [brew.sh](http://brew.sh).
+
+If `make` is unable to find header files (particularly on OSX 10.10 Yosemite), it's likely that /usr/include is missing or empty. Run `xcode-select --install` and install the Command Line Developer Tools to resolve this issue.
+
 ##Support
 For development support, questions etc. please use the [mailing list](https://groups.google.com/a/erayd.net/forum/#!forum/libec).
 
