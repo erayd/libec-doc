@@ -22,6 +22,11 @@ $ make check
 ```
 
 ##Build requirements
+###Linux
+Any recent Linux system with autotools installed should be able to build libec out of the box, provided libsodium and talloc are installed.
+
+The reference system for development is 64bit Gentoo Linux.
+
 ###OSX
 In order to build libec on OSX, the following additional built-time dependencies are required:
 
@@ -34,6 +39,9 @@ In order to build libec on OSX, the following additional built-time dependencies
 autoconf, automake, libtool, pkg-config, libsodium, and talloc are all available via homebrew (`brew install <package>`). If you don't have homebrew installed, please see [brew.sh](http://brew.sh).
 
 If `make` is unable to find header files (particularly on OSX 10.10 Yosemite), it's likely that /usr/include is missing or empty. Run `xcode-select --install` and install the Command Line Developer Tools to resolve this issue.
+
+###Windows
+Libec is not currently available on Windows, but may be in the future. Code contributions for a Windows build are welcome.
 
 ##Support
 For development support, questions etc. please use the [mailing list](https://groups.google.com/a/erayd.net/forum/#!forum/libec).
