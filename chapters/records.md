@@ -25,6 +25,7 @@ If a section name is prefixed by '$', then all records in that section (includin
  * [ec_record_get()](#ec-record-get)
  * [ec_record_section()](#ec-record-section)
  * [ec_record_data()](#ec-record-data)
+ * [ec_record_buf()](#ec-record-buf)
 
 ###ec_record_create()
 `ec_record_t *ec_record_create(uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
@@ -221,5 +222,24 @@ Get a pointer to a record's data buffer. Returns NULL if `r` is NULL.
 #include <ec.h>
 ...
 unsigned char *buf = ec_record_data(r);
+...
+```
+
+###ec_record_buf()
+`unsigned char *ec_record_buf(ec_cert_t *c, char *section, char *key, size_t length);`
+
+Quickly get or create a record-backed buffer of at least `length` bytes. Returns NULL on error.
+
+If the record already exists, but the buffer is smaller than `length`, this is considered an error. Otherwise, the existing record is used as-is without alteration, and the data buffer is returned.
+
+If the record does not exist, then a new record is created with a zero-initialised buffer of the desired length.
+
+```c
+#include <ec.h>
+...
+unsigned char *buf = ec_record_buf(c, "mySection", "myRecord", 500);
+if(buf != NULL) {
+    //successfully created a 500-byte buffer
+}
 ...
 ```
