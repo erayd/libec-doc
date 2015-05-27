@@ -47,6 +47,9 @@ EC_RECORD_KFREE|The key for this record will be automatically freed when the rec
 EC_RECORD_KCOPY|The key for this record will be copied, rather than added by reference. Implies EC_RECORD_KFREE.
 EC_RECORD_DFREE|The data for this record will be automatically freed when the record is destroyed.
 EC_RECORD_DCOPY|The data for this record will be copied, rather than added by reference. Implies EC_RECORD_DFREE.
+EC_RECORD_KALLOC|Allocate and initialise to zero a new buffer for the key. The value of `key` is ignored.
+EC_RECORD_DALLOC|Allocate and initialise to zero a new buffer for the data. The value of `data` is ignored.
+EC_RECORD_SIGNED|Used only as a match filter. If this flag is set, records with NOSIGN will not match.
 
 ```c
 #include <ec.h>
