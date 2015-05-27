@@ -243,3 +243,15 @@ if(buf != NULL) {
 }
 ...
 ```
+
+###ec_record_section_flags()
+`void ec_record_section_flags(ec_cert_t *c, char *section, uint16_t flags);`
+
+Bulk-set additional flags for an entire section, if the section exists.
+
+```c
+#include <ec.h>
+...
+ec_record_section_flags(c, "mySection", EC_CERT_NOSIGN);
+...
+```
