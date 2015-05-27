@@ -244,7 +244,7 @@ unsigned char *buf = ec_record_data(r);
 
 Quickly get or create a record-backed buffer of at least `length` bytes. Returns NULL on error.
 
-If the record already exists, but the buffer is smaller than `length`, this is considered an error. Otherwise, the existing record is used as-is without alteration, and the data buffer is returned.
+If the record already exists, but the buffer is smaller than `length`, or some of the `flags` are unset, this is considered an error. Otherwise, the existing record is used as-is without alteration, and the data buffer is returned.
 
 If the record does not exist, then a new record is created with a zero-initialised buffer of the desired length, and `flags` will be added to the default.
 
