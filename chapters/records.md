@@ -24,9 +24,9 @@ If a section name is prefixed by '$', then all records in that section (includin
  * [ec_record_set()](#ec-record-set)
  * [ec_record_get()](#ec-record-get)
  * [ec_record_section()](#ec-record-section)
+ * [ec_record_section_flags()](#ec-record-section-flags)
  * [ec_record_data()](#ec-record-data)
  * [ec_record_buf()](#ec-record-buf)
- * [ec_record_section_flags()](#ec-record-section-flags)
 
 ###ec_record_create()
 `ec_record_t *ec_record_create(uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
@@ -214,6 +214,18 @@ if(section_name != NULL) {
 ...
 ```
 
+###ec_record_section_flags()
+`void ec_record_section_flags(ec_cert_t *c, char *section, uint16_t flags);`
+
+Bulk-set additional flags for an entire section, if the section exists.
+
+```c
+#include <ec.h>
+...
+ec_record_section_flags(c, "mySection", EC_CERT_NOSIGN);
+...
+```
+
 ###ec_record_data()
 `unsigned char *ec_record_data(ec_record_t *r);`
 
@@ -242,17 +254,5 @@ unsigned char *buf = ec_record_buf(c, "mySection", "myRecord", 500, EC_RECORD_NO
 if(buf != NULL) {
     //successfully created a 500-byte buffer
 }
-...
-```
-
-###ec_record_section_flags()
-`void ec_record_section_flags(ec_cert_t *c, char *section, uint16_t flags);`
-
-Bulk-set additional flags for an entire section, if the section exists.
-
-```c
-#include <ec.h>
-...
-ec_record_section_flags(c, "mySection", EC_CERT_NOSIGN);
 ...
 ```
