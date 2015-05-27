@@ -24,6 +24,7 @@ If a section name is prefixed by '$', then all records in that section (includin
  * [ec_record_set()](#ec-record-set)
  * [ec_record_get()](#ec-record-get)
  * [ec_record_section()](#ec-record-section)
+ * [ec_record_data()](#ec-record-data)
 
 ###ec_record_create()
 `ec_record_t *ec_record_create(uint16_t flags, char *key, unsigned char *data, uint16_t data_len);`
@@ -208,5 +209,17 @@ char *section_name = ec_record_section(r);
 if(section_name != NULL) {
     //record has a valid section name
 }
+...
+```
+
+###ec_record_data()
+`unsigned char *ec_record_data(ec_record_t *r);`
+
+Get a pointer to a record's data buffer. Returns NULL if `r` is NULL.
+
+```c
+#include <ec.h>
+...
+unsigned char *buf = ec_record_data(r);
 ...
 ```
