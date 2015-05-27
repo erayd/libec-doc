@@ -239,7 +239,8 @@ unsigned char *buf = ec_record_data(r);
 ```
 
 ###ec_record_buf()
-`unsigned char *ec_record_buf(ec_cert_t *c, char *section, char *key, size_t length, uint16_t flags);`
+`unsigned char *ec_record_buf(ec_cert_t *c, char *section, char *key, size_t length,`  
+`uint16_t flags);`
 
 Quickly get or create a record-backed buffer of at least `length` bytes. Returns NULL on error.
 
