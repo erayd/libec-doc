@@ -15,6 +15,8 @@ If a section name is prefixed by '$', then all records in that section (includin
  * [ec_record_str()](#ec-record-str)
  * [ec_record_destroy()](#ec-record-destroy)
  * [ec_record_add()](#ec-record-add)
+ * [ec_record_remove()](#ec-record-remove)
+ * [ec_record_remove_section()](#ec-record-remove-section)
  * [ec_record_match()](#ec-record-match)
  * [ec_record_match_bin()](#ec-record-match-bin)
  * [ec_record_match_str()](#ec-record-match-str)
@@ -89,6 +91,32 @@ The record will be added to the section referred to by `section`, and the sectio
 if(ec_record_add(c, "my_section", my_record) == NULL) {
     //failed to add record
 }
+...
+```
+
+###ec_record_remove()
+`ec_record_t *ec_record_remove(ec_cert_t *c, ec_record_t *r);`
+
+Remove a record from a certificate, if present. Always returns `r`.
+
+```c
+#include <ec.h>
+...
+ec_record_remove(c, r);
+...
+```
+
+###ec_record_remove_section()
+`void ec_record_remove_section(ec_cert_t *c, char *section, ec_freefn_t freefn);`
+
+Remove an entire section and all its child records from a certificate, if present.
+
+If `freefn` is provided, it will be run once for each removed record, after that record is removed. If `freefn` is NULL, then nothing will be run on the removed records, and you should destroy them manually if they are no longer required.
+
+```c
+#include <ec.h>
+...
+ec_record_remove_section(c, "mySection", (ec_freefn_t)ec_record_destroy);
 ...
 ```
 
