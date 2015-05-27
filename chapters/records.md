@@ -226,18 +226,18 @@ unsigned char *buf = ec_record_data(r);
 ```
 
 ###ec_record_buf()
-`unsigned char *ec_record_buf(ec_cert_t *c, char *section, char *key, size_t length);`
+`unsigned char *ec_record_buf(ec_cert_t *c, char *section, char *key, size_t length, uint16_t flags);`
 
 Quickly get or create a record-backed buffer of at least `length` bytes. Returns NULL on error.
 
 If the record already exists, but the buffer is smaller than `length`, this is considered an error. Otherwise, the existing record is used as-is without alteration, and the data buffer is returned.
 
-If the record does not exist, then a new record is created with a zero-initialised buffer of the desired length.
+If the record does not exist, then a new record is created with a zero-initialised buffer of the desired length, and `flags` will be added to the default.
 
 ```c
 #include <ec.h>
 ...
-unsigned char *buf = ec_record_buf(c, "mySection", "myRecord", 500);
+unsigned char *buf = ec_record_buf(c, "mySection", "myRecord", 500, EC_RECORD_NOSIGN);
 if(buf != NULL) {
     //successfully created a 500-byte buffer
 }
