@@ -48,7 +48,7 @@ if(bytes_written == 0) {
 ###ec_export_64()
 `char *ec_export_64(char *dest, ec_cert_t *c, uint8_t export_flags);`
 
-Identical to `ec_export()`, except that the certificate is base64-encoded and armoured before writing to `dest`.
+Identical to `ec_export()`, except that the certificate is base64-encoded and armoured before writing to `dest`. Returns `dest` on success, or NULL on failure.
 
 ###ec_import()
 `ec_cert_t *ec_import(unsigned char *src, size_t length, size_t *consumed);`
