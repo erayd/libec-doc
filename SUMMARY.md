@@ -9,4 +9,5 @@
 * [Export & Import](chapters/export_&_import.md)
 * [Channels](chapters/channels.md)
 * [Misc](chapters/misc.md)
+* Installation
 
