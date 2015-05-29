@@ -19,6 +19,11 @@ $ make check
 # make install
 ```
 
+###System Requirements
+Libec is intended for use on little-endian POSIX systems (e.g. Linux, OSX etc.)
+
+***Libec is not targeted at or tested on big-endian systems.*** While it's possible that libec may build on some big-endian systems, it will probably not function as intended, and at a minimum will be incompatible with certificate or other data generated on a little-endian system.
+
 ##Build requirements
 ###Linux
 Any recent Linux system with autotools installed should be able to build libec out of the box, provided libsodium and talloc are installed.
