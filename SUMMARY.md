@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* Installation
 * [Usage](chapters/usage.md)
 * [Certificates](chapters/certificates.md)
 * [Records](chapters/records.md)
@@ -9,5 +10,4 @@
 * [Export & Import](chapters/export_&_import.md)
 * [Channels](chapters/channels.md)
 * [Misc](chapters/misc.md)
-* Installation
 
