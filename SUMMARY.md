@@ -1,8 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
-* [Build & Install](chapters/building.md)
 * [Usage](chapters/usage.md)
+* [Building](chapters/building.md)
 * [Certificates](chapters/certificates.md)
 * [Records](chapters/records.md)
 * [Contexts](chapters/contexts.md)
