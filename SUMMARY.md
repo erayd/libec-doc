@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Installation](chapters/building.md)
+* [Building](chapters/building.md)
 * [Usage](chapters/usage.md)
 * [Certificates](chapters/certificates.md)
 * [Records](chapters/records.md)
